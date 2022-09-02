@@ -7,3 +7,4 @@ jupyter
 tqdm
 flask
 requests
+gdown
