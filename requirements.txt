@@ -8,3 +8,4 @@ tqdm
 flask
 requests
 gdown
+gunicorn
