@@ -7,8 +7,9 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 class TextCleaner(BaseEstimator, TransformerMixin):
     def __init__(self):
-        nltk.download('stopwords', download_dir='/app')
-        nltk.download('punkt', download_dir='/app')
+        nltk.data.path.append("/app/nltk_data")  
+        nltk.download('stopwords', download_dir='/app/nltk_data')
+        nltk.download('punkt', download_dir='/app/nltk_data')
         self.patterns = ["<.+?>", "\S*\d+\S*"]
         self.stopwords = nltk.corpus.stopwords.words('english') + ["'ll", "'re", "'m"]
         self.punk_table = str.maketrans({key: None for key in string.punctuation})
