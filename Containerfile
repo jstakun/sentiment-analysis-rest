@@ -8,7 +8,10 @@ COPY ./requirements.txt ./*.py ${APP_ROOT}/
 RUN microdnf install -y python39 && \
     python3.9 -m pip install --upgrade pip --no-cache-dir -r requirements.txt && \
     chown -R 1001:root $APP_ROOT && \
-    chmod g+rw $APP_ROOT 
+    chmod g+rw $APP_ROOT && \
+    mkdir /.cache && \
+    chown -R 1001:root /.cache && \
+    chmod g+rw /.cache 
 USER 1001
 EXPOSE 8080
 CMD ["gunicorn", "wsgi", "--config", "gunicorn_config.py"]
